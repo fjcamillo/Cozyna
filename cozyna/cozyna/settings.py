@@ -25,7 +25,7 @@ SECRET_KEY = ')vs346c1b6z=u423tgp*wpi_x9wdu79q__i$a9d_2_%6voz382'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'api',
+    'home',
 ]
 
 MIDDLEWARE = [
@@ -73,11 +75,26 @@ WSGI_APPLICATION = 'cozyna.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+import userpass
+user = userpass.taraliBotDatabaseUsername()
+passw = userpass.taraliBotDatabasePassword()
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'cozyna',
+        'USER': user,
+        'PASSWORD': passw,
+        'HOST': 'localhost',
+        'PORT': ''
     }
+    # 'default': 'postgres://taraliBot:softwareengineering@127.0.0.1:5432/taraliBotDB'
 }
 
 
