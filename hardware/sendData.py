@@ -19,7 +19,8 @@ while 1:
         Datapayload = {
             "configuration": ArrayData[0],
             "Data": ArrayData[1]
+
         }
         payload = json.dumps(Datapayload)
 
-        r = requests.post('http://localhost:8000/api/sitCounter', data=payload)
+        r = requests.post('http://127.0.0.1:8000/api/sit/', data=payload)
