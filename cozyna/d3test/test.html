@@ -1,0 +1,27 @@
+<!doctype html>
+
+<html>
+
+<head>
+  <title>test 1</title>
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+</head>
+
+<body>
+  <p>This is a paragrah</p>
+  <script>
+    // d3.select("p").text('Hello World');
+
+    var canvas = d3.select("body")
+                .append('svg')
+                .attr("width", 500)
+                .attr('height', 500);
+
+    var circle = canvas.append('circle')
+                 .attr('cx', 250)
+                 .attr('cy', 250)
+                 .attr('r', 50)
+                 .attr('fill','red');
+  </script>
+</body>
+</html>

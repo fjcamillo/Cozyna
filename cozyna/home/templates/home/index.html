@@ -1,0 +1,90 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+
+<html lang="en" class="no-js">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- <link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/stylesheet.css"> -->
+
+	<link rel="stylesheet" type="text/css" href={% static 'home/css/reset.css' %}>
+	<link rel="stylesheet" type="text/css" href={% static 'home/css/style.css' %}>
+	<link rel="stylesheet" type="text/css" href={% static 'home/css/stylesheet.css' %}>
+
+	<title>Cozyna | Lorem ipsum dolor sit amet consectetur</title>
+</head>
+
+<body data-hijacking="off" data-animation="opacity">
+
+	<section class="cd-section visible">
+		<div>
+			<h2 class="title">Cozyna</h2>
+		</div>
+	</section>
+
+	<section class="cd-section">
+		<div>
+			<h2 class="desc">Hello, user! Scroll down to monitor your customer satisfaction and services.</h2>
+		</div>
+	</section>
+
+	<section class="cd-section">
+		<div>
+			<h2 class="graph_title">- Waiter Management - </h2>
+			<div class="graph_container ">
+				<img src="img/graph1.gif" width="600px" height="400px"  />
+				<span class="tooltiptext">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
+			</div>
+		</div>
+	</section>
+
+	<section class="cd-section">
+		<div>
+			<h2 class="graph_title">-Customer Satisfaction -</h2>
+			<div class="graph_container">
+				<img src={% static 'home/img/graph2.gif' %} width="600px" height="400px"  />
+			</div>
+		</div>
+	</section>
+
+	<section class="cd-section">
+		<div>
+			<h2 class="graph_title">- Customer Service -</h2>
+			<div class="graph_container">
+				<!-- <img src="img/graph1.gif" width="600px" height="400px"  /> -->
+				<img src={% static 'home/img/graph1.gif' %} width="600px" height="400px"  />
+			</div>
+		</div>
+	</section>
+
+	<nav>
+		<ul class="cd-vertical-nav">
+			<li><a href="#0" class="cd-prev inactive">Next</a></li>
+			<li><a href="#0" class="cd-next">Prev</a></li>
+		</ul>
+	</nav> <!-- .cd-vertical-nav -->
+
+
+	<!-- <script type="text/javascript" src="js/jquery-2.1.4.js"></script>
+	<script type="text/javascript" src="js/velocity.min.js"></script>
+	<script type="text/javascript" src="js/velocity.ui.min.js"></script>
+	<script type="text/javascript" src="js/main.js"></script> -->
+
+	<script type="text/javascript" src={%  static 'home/js/jquery-2.1.4.js' %}></script>
+	<script type="text/javascript" src={%  static 'home/js/velocity.min.js' %}></script>
+	<script type="text/javascript" src={%  static 'home/js/velocity.ui.min.js' %}></script>
+	<script type="text/javascript" src={%  static 'home/js/main.js' %}></script>
+
+
+
+</body>
+</html>
