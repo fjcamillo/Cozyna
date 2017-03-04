@@ -15,11 +15,11 @@ def index(request):
 
 class sitCounter(generic.View):
 
-    def get(self, request, *args, **kwargs):
-        if self.request.GET['hub.verify_token'] == verify_token:
-            return HttpResponse(self.request.GET['hub.challenge'])
-        else:
-            return HttpResponse('Error', 'Invalid Token')
+    # def get(self, request, *args, **kwargs):
+    #     if self.request.GET['hub.verify_token'] == verify_token:
+    #         return HttpResponse(self.request.GET['hub.challenge'])
+    #     else:
+    #         return HttpResponse('Error', 'Invalid Token')
 
     @method_decorator(csrf_exempt)
     def dispatch(self, request, *args,**kwargs):
@@ -27,4 +27,5 @@ class sitCounter(generic.View):
 
     def post(self, request, *args, **kwargs):
         incoming_message = json.loads(self.request.body.decode('utf-8'))
+        pprint(incoming_message)
         return HttpResponse()
