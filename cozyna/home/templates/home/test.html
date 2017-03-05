@@ -1,0 +1,59 @@
+<!doctype html>
+
+<html>
+
+<head>
+  <title>test 1</title>
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+</head>
+
+<body>
+  <!-- <p>This is a paragrah</p> -->
+  <script>
+    // d3.select("p").text('Hello World');
+    //
+    // var canvas = d3.select("body")
+    //             .append('svg')
+    //             .attr("width", 500)
+    //             .attr('height', 500);
+    //
+    // var circle = canvas.append('circle')
+    //              .attr('cx', 250)
+    //              .attr('cy', 250)
+    //              .attr('r', 50)
+    //              .attr('fill','red');
+
+    // var dataArray = [10, 30, 40, 50];
+    var dataArray = [];
+
+    {% for arrive in arrivedCustomer %}
+      dataArray.push({{arrive.tableNumber}})
+    {% endfor %}
+
+    var width = 800;
+    var height = 800;
+
+    var widthScale = d3.scale.linear()
+                    .domain([0, 100])
+                    .range([0, width])
+
+    var canvas = d3.select("body")
+                .append('svg')
+                .attr("width", width)
+                .attr('height', height);
+
+    var bars = canvas.selectAll("rect")
+                .data(dataArray)
+                .enter()
+                  .append("rect")
+                  .attr("width", (d)=>{return widthScale(d)})
+                  .attr("height", 50)
+                  .attr("y", (d, i)=>{return i*100});
+
+    // circle.transition()
+    //   .duration(1500)
+    //   .attr('cx', 150)
+    //   .attr('cy', 150);
+  </script>
+</body>
+</html>
