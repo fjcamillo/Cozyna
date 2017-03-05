@@ -11,7 +11,12 @@ from django.views import generic
 import requests
 from pprint import pprint
 import json
+import psycopg2
+import datetime
 # Create your views here.
+
+conn = psycopg2.connect("dbname=cozyna user=fjcamillo")
+cur = conn.cursor()
 
 def index(request):
     return HttpResponse('<h1>API</h1>')
@@ -27,6 +32,8 @@ class sitCounter(generic.View):
     def post(self, request, *args, **kwargs):
         incoming_message = json.loads(self.request.body.decode('utf-8'))
         pprint(incoming_message)
+        data = incoming_message['Data']
+        cur.execute("INSERT INTO arrived () ")
         return HttpResponse()
 
 class entered(generic.View):
@@ -1369,6 +1376,7 @@ class table_twenty_endSit(generic.View):
     def post(self, request, *args, **kwargs):
         incoming_message = json.loads(self.request.body.decode('utf-8'))
         pprint(incoming_message)
+
         return HttpResponse()
 
 class table_one_endSit(generic.View):

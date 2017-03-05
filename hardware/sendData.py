@@ -1,6 +1,8 @@
 from serial import Serial
 import json
 import requests
+import time
+import datetime
 
 data = {}
 
@@ -143,28 +145,29 @@ urls = {
 
 }
 
-arduino = Serial('/dev/ttyACM0', 9600, timeout=.1)
+arduino = Serial('/dev/ttyUSB0', 9600, timeout=.1)
 
 def segregate(config, second):
     if config == 'sit' and second == 'sit':
-        urlneeded = url[config]
+        urlneeded = urls[config]
         return urlneeded
     elif config == 'entered' and second == 'entered':
-        urlneeded = url[config]
+        urlneeded = urls[config]
         return urlneeded
     else:
-        return url[config][second]
+        return urls[config][second]
 while 1:
     if arduino.readline():
         inputData = arduino.readline()[:-2]
         ArrayData = inputData.split(' ')
+        print(len(ArrayData))
         print(str(ArrayData))
         Datapayload = {
-            "configuration": ArrayData[0],
-            "secondConfig": ArrayData[1],
-            "Data": ArrayData[2]
+            "Timestep": str(datetime.datetime.now()),
+            "Data": ArrayData[2],
+
 
         }
         payload = json.dumps(Datapayload)
 
-        r = requests.post(segregate(Datapayload['configuration'], Datapayload['secondConfig']), data=payload)
+        r = requests.post(segregate(ArrayData[0],ArrayData[1]), data=payload)

@@ -18,4 +18,4 @@ def index(request):
         'va': va
     }
     # return render(request, 'home/index.html', context)
-    return render(request, 'home/test.html', context)
+    return render(request, 'home/index.html', context)

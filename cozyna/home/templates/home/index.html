@@ -1,11 +1,11 @@
 {% load staticfiles %}
 
 <!DOCTYPE html>
-
 <html lang="en" class="no-js">
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1"
+	>
 
 	<!-- <link rel="stylesheet" type="text/css" href="css/reset.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
@@ -14,6 +14,7 @@
 	<link rel="stylesheet" type="text/css" href={% static 'home/css/reset.css' %}>
 	<link rel="stylesheet" type="text/css" href={% static 'home/css/style.css' %}>
 	<link rel="stylesheet" type="text/css" href={% static 'home/css/stylesheet.css' %}>
+	<script src="http://d3js.org/d3.v3.min.js"></script>
 
 	<title>Cozyna | Lorem ipsum dolor sit amet consectetur</title>
 </head>
@@ -22,7 +23,10 @@
 
 	<section class="cd-section visible">
 		<div>
-			<h2 class="title">Cozyna</h2>
+			<!-- <h2 class="title">Cozyna</h2> -->
+			<img src={% static 'home/img/CozyWhite.png' %} class="logo" width="500px" height="" />
+			<!-- <img src="img/CozyWhite.png" class="logo" width="500px" height="" /> -->
+			<h2 class="title">Your IoT restaurant solution.</h2>
 		</div>
 	</section>
 
@@ -34,9 +38,44 @@
 
 	<section class="cd-section">
 		<div>
-			<h2 class="graph_title">- Waiter Management - </h2>
+			<h2 class="graph_title">Waiter Management</h2>
+			<h3 class="graph_subtitle">Manage your waiter management lorem dolor sit amet.</h3>
 			<div class="graph_container ">
-				<img src={% static 'home/img/graph1.gif' %} width="600px" height="400px"  />
+				<script>
+
+			    var dataArray = [];
+			    // var connection = new WebSocket('http://localhost:8000/api/sit/');
+			    {% for arrive in arrivedCustomer %}
+			      dataArray.push({{arrive.tableNumber}})
+			    {% endfor %}
+
+			    var width = 500;
+			    var height = 200;
+
+			    var widthScale = d3.scale.linear()
+			                    .domain([0, 100])
+			                    .range([0, width]);
+
+					var heighitScale = d3.scale.linear()
+													.domain([0, 100])
+													.range([0, height]);
+
+			    var canvas = d3.select("body")
+			                .append('svg')
+			                .attr("width", width)
+			                .attr('height', height);
+
+			    var bars = canvas.selectAll("rect")
+			                .data(dataArray)
+			                .enter()
+			                  .append("rect")
+			                  .attr("width", 50)
+			                  .attr("height", (d)=>{return widthScale(d)*10})
+			                  .attr("x", (d, i)=>{return i*100})
+												.attr('fill', 'red');
+			  </script>
+				<!-- <img src="img/graph1.gif" width="800px" height="400px"  /> -->
+				<!-- <img src={% static 'home/img/graph1.gif' %} width="800px" height="400px"  /> -->
 				<span class="tooltiptext">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -49,20 +88,101 @@
 
 	<section class="cd-section">
 		<div>
-			<h2 class="graph_title">-Customer Satisfaction -</h2>
+			<h2 class="graph_title">Customer Satisfaction</h2>
+			<h3 class="graph_subtitle">Manage your waiter management lorem dolor sit amet.</h3>
 			<div class="graph_container">
-				<img src={% static 'home/img/graph2.gif' %} width="600px" height="400px"  />
+				<img src={% static 'home/img/graph2.gif' %} width="800px" height="400px"  />
+				<span class="tooltiptext">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
 			</div>
 		</div>
 	</section>
 
 	<section class="cd-section">
 		<div>
-			<h2 class="graph_title">- Customer Service -</h2>
+			<h2 class="graph_title">Customer Service</h2>
+			<h3 class="graph_subtitle">Manage your waiter management lorem dolor sit amet.</h3>
 			<div class="graph_container">
-				<!-- <img src="img/graph1.gif" width="600px" height="400px"  /> -->
-				<img src={% static 'home/img/graph1.gif' %} width="600px" height="400px"  />
+				<img src={% static 'home/img/graph1.gif' %} width="800px" height="400px"  />
+				<span class="tooltiptext">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
 			</div>
+		</div>
+	</section>
+
+	<section class="cd-section">
+		<div>
+			<h2 class="graph_title">Rommel Service</h2>
+			<h3 class="graph_subtitle">Manage your waiter management lorem dolor sit amet.</h3>
+			<div class="graph_container">
+				<img src={% static 'home/img/graph1.gif' %} width="800px" height="400px"  />
+				<span class="tooltiptext">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
+			</div>
+		</div>
+	</section>
+
+	<section class="cd-section">
+		<div>
+			<h2 class="graph_title">Shella Service</h2>
+			<h3 class="graph_subtitle">Manage your waiter management lorem dolor sit amet.</h3>
+			<div class="graph_container">
+				<img src={% static 'home/img/graph1.gif' %} width="800px" height="400px"  />
+				<span class="tooltiptext">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
+			</div>
+		</div>
+	</section>
+
+	<section class="cd-section">
+		<div>
+			<h2 class="graph_title">Frans Service</h2>
+			<h3 class="graph_subtitle">Manage your waiter management lorem dolor sit amet.</h3>
+			<div class="graph_container">
+				<img src={% static 'home/img/graph1.gif' %} width="800px" height="400px"  />
+				<span class="tooltiptext">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
+			</div>
+		</div>
+	</section>
+
+	<section class="cd-section">
+		<div>
+			<h2 class="graph_title">Team Kreate</h2>
+			<h3 class="graph_subtitle">The development team behind Cozyna, your IoT restaurant solution.</h3>
+			<span class="names">
+				<span class="name">Francisc Jerhone Camillo</span>
+				<span class="name2">RPi, Back End, Machine Learning, Graphs</span>
+
+				<span class="name">Shella May B. Cantos</span>
+				<span class="name2">Backend, Hardware</span>
+
+				<span class="name">Rommel R. Reyes Jr.</span>
+				<span class="name2">Hardware</span>
+
+				<span class="name">Shanilyn Louise G. Santiago</span>
+				<span class="name2">Front End</span>
+			</span>
 		</div>
 	</section>
 
@@ -79,12 +199,10 @@
 	<script type="text/javascript" src="js/velocity.ui.min.js"></script>
 	<script type="text/javascript" src="js/main.js"></script> -->
 
-	<script type="text/javascript" src={%  static 'home/js/jquery-2.1.4.js' %}></script>
-	<script type="text/javascript" src={%  static 'home/js/velocity.min.js' %}></script>
-	<script type="text/javascript" src={%  static 'home/js/velocity.ui.min.js' %}></script>
-	<script type="text/javascript" src={%  static 'home/js/main.js' %}></script>
-
-
+	<script type="text/javascript" src={% static 'home/js/jquery-2.1.4.js' %}></script>
+	<script type="text/javascript" src={% static 'home/js/velocity.min.js' %}></script>
+	<script type="text/javascript" src={% static 'home/js/velocity.ui.min.js' %}></script>
+	<script type="text/javascript" src={% static 'home/js/main.js' %}></script>
 
 </body>
 </html>

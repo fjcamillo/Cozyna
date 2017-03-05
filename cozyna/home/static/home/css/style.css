@@ -15,9 +15,16 @@ body {
   font-size: 1.6rem;
   font-family: "Open Sans", sans-serif;
   color: #ffffff;
-  background-color: #d0a04c;
+  /*background-color: #d0a04c;*/
+  background-color: #444;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url('../img/bg8.png');
+  height: 100vh;
+
 }
 body::before {
   /* never visible - this is used in jQuery to check the current MQ */
@@ -57,6 +64,7 @@ Main Components
 }
 .cd-section:first-of-type > div {
   background-color: #d0a04c;
+  /*background-color: #000;*/
 }
 .cd-section:first-of-type > div::before {
   /* alert -> all scrolling effects are not visible on small devices */
@@ -73,15 +81,36 @@ Main Components
 }
 .cd-section:nth-of-type(2) > div {
   background-color: #d0a04c;
+  /*background-image: url('img/bg.jpg');*/
 }
 .cd-section:nth-of-type(3) > div {
-  background-color: #d0a04c;
+  background-color: #090909;
+  height: 100vh;
 }
 .cd-section:nth-of-type(4) > div {
-  background-color: #d0a04c;
+  background-color: #131313;
+  height: 100vh;
 }
 .cd-section:nth-of-type(5) > div {
-  background-color: #d0a04c;
+  background-color: #1d1d1d;
+  height: 100vh;
+}
+.cd-section:nth-of-type(6) > div {
+  background-color: #272727;
+  height: 100vh;
+}
+.cd-section:nth-of-type(7) > div {
+  background-color: #303030;
+  height: 100vh;
+}
+.cd-section:nth-of-type(8) > div {
+  background-color: #3a3a3a;
+  height: 100vh;
+}
+.cd-section:nth-of-type(9) > div {
+  background-color: #444;
+  height: 100vh;
+
 }
 [data-animation="parallax"] .cd-section > div, [data-animation="fixed"] .cd-section > div, [data-animation="opacity"] .cd-section > div {
   background-position: center center;
@@ -89,19 +118,23 @@ Main Components
   background-size: cover;
 }
 [data-animation="parallax"] .cd-section:first-of-type > div, [data-animation="fixed"] .cd-section:first-of-type > div, [data-animation="opacity"] .cd-section:first-of-type > div {
-  background-image: url("../img/img-1.jpg");
+  /*background-image: url("../img/bg.jpg");
+  background-image: url("../img/img-3.jpg");*/
 }
 [data-animation="parallax"] .cd-section:nth-of-type(2) > div, [data-animation="fixed"] .cd-section:nth-of-type(2) > div, [data-animation="opacity"] .cd-section:nth-of-type(2) > div {
-  background-image: url("../img/img-2.jpg");
+  background-image: url("../img/bg7.jpg");
 }
 [data-animation="parallax"] .cd-section:nth-of-type(3) > div, [data-animation="fixed"] .cd-section:nth-of-type(3) > div, [data-animation="opacity"] .cd-section:nth-of-type(3) > div {
-  background-image: url("../img/img-3.jpg");
+  /*background-image: url("../img/img-3.jpg");*/
+ /* background-image: url("../img/subtle_white_feathers.png");
+  background-repeat: repeat;*/
+
 }
 [data-animation="parallax"] .cd-section:nth-of-type(4) > div, [data-animation="fixed"] .cd-section:nth-of-type(4) > div, [data-animation="opacity"] .cd-section:nth-of-type(4) > div {
-  background-image: url("../img/img-4.jpg");
+  /*background-image: url("../img/img-4.jpg");*/
 }
 [data-animation="parallax"] .cd-section:nth-of-type(5) > div, [data-animation="fixed"] .cd-section:nth-of-type(5) > div, [data-animation="opacity"] .cd-section:nth-of-type(5) > div {
-  background-image: url("../img/img-5.jpg");
+  /*background-image: url("../img/img-5.jpg");*/
 }
 @media only screen and (min-width: 1050px) {
   .cd-section h2 {
@@ -138,6 +171,7 @@ Main Components
   }
   [data-animation="opacity"] .cd-section.visible > div {
     z-index: 1;
+    /*background-image: url('../img/bg.jpg');*/
   }
 }
 

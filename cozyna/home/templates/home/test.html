@@ -46,20 +46,20 @@
                 .data(dataArray)
                 .enter()
                   .append("rect")
-                  .attr("width", (d)=>{return widthScale(d)})
-                  .attr("height", 50)
-                  .attr("y", (d, i)=>{return i*100});
+                  .attr("width", 50)
+                  .attr("height", (d)=>{return widthScale(d)*10})
+                  .attr("x", (d, i)=>{return i*100});
 
 
-    connection.onmessage = function(event) {
-                      var newData = JSON.parse(event.data);
-                      var updateObject =[{
-                          "tableNumber": newData.tableNumber
-                      }]
-                      //resetData(ndx, [yearDim, spendDim, nameDim]);
-                      xfilter.add(updateObject);
-                      d3.redrawAll();
-    }
+    // connection.onmessage = function(event) {
+    //                   var newData = JSON.parse(event.data);
+    //                   var updateObject =[{
+    //                       "tableNumber": newData.tableNumber
+    //                   }]
+    //                   //resetData(ndx, [yearDim, spendDim, nameDim]);
+    //                   xfilter.add(updateObject);
+    //                   d3.redrawAll();
+    // }
 
     // circle.transition()
     //   .duration(1500)
