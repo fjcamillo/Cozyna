@@ -1,9 +1,10 @@
 from django.conf.urls import url, include
-from .views import index, sitCounter
+from .views import index, sitCounter, entered
 import views
 # from .views import
 urlpatterns = [
     url(r'^sit/', sitCounter.as_view()),
+    url(r'^entered/', entered.as_view()),
     url(r'^table/1/startsit/', views.table_one_startSit.as_view()),
     url(r'^table/2/startsit/', views.table_two_startSit.as_view()),
     url(r'^table/3/startsit/', views.table_three_startSit.as_view()),

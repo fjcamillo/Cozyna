@@ -138,17 +138,22 @@ urls = {
         'finished': 'http://127.0.0.1/api/table/20/finished',
         'endSit': 'http://127.0.0.1/api/table/20/endSit',
     },
-
+    'entered': 'http://127.0.0.1/api/entered',
+    'sit': 'http://127.0.0.1/api/sit'
 
 }
 
 arduino = Serial('/dev/ttyACM0', 9600, timeout=.1)
 
-def segregate(config):
-    if config == 'sit':
-        url = '127.0.0.1:8080/api/sitCounter'
-        return url
-
+def segregate(config, second):
+    if config == 'sit' and second == 'sit':
+        urlneeded = url[config]
+        return urlneeded
+    elif config == 'entered' and second == 'entered':
+        urlneeded = url[config]
+        return urlneeded
+    else:
+        return url[config][second]
 while 1:
     if arduino.readline():
         inputData = arduino.readline()[:-2]
@@ -156,9 +161,10 @@ while 1:
         print(str(ArrayData))
         Datapayload = {
             "configuration": ArrayData[0],
-            "Data": ArrayData[1]
+            "secondConfig": ArrayData[1],
+            "Data": ArrayData[2]
 
         }
         payload = json.dumps(Datapayload)
 
-        r = requests.post('http://127.0.0.1:8000/api/sit/', data=payload)
+        r = requests.post(segregate(Datapayload['configuration'], Datapayload['secondConfig']), data=payload)

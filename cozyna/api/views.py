@@ -29,6 +29,19 @@ class sitCounter(generic.View):
         pprint(incoming_message)
         return HttpResponse()
 
+class entered(generic.View):
+    @csrf_exempt
+    def dispatch(self, request, *args,**kwargs):
+        return generic.View.dispatch(self, request, *args, **kwargs)
+
+    # @method_decorator(csrf_excempt)
+    # @ensure_csrf_cookie
+    # @method_decorator(ensure_csrf_cookie)
+    def post(self, request, *args, **kwargs):
+        incoming_message = json.loads(self.request.body.decode('utf-8'))
+        pprint(incoming_message)
+        return HttpResponse()
+
 class table_one_startSit(generic.View):
     @csrf_exempt
     def dispatch(self, request, *args,**kwargs):

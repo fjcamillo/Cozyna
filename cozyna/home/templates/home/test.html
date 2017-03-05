@@ -25,7 +25,7 @@
 
     // var dataArray = [10, 30, 40, 50];
     var dataArray = [];
-
+    // var connection = new WebSocket('http://localhost:8000/api/sit/');
     {% for arrive in arrivedCustomer %}
       dataArray.push({{arrive.tableNumber}})
     {% endfor %}
@@ -49,6 +49,17 @@
                   .attr("width", (d)=>{return widthScale(d)})
                   .attr("height", 50)
                   .attr("y", (d, i)=>{return i*100});
+
+
+    connection.onmessage = function(event) {
+                      var newData = JSON.parse(event.data);
+                      var updateObject =[{
+                          "tableNumber": newData.tableNumber
+                      }]
+                      //resetData(ndx, [yearDim, spendDim, nameDim]);
+                      xfilter.add(updateObject);
+                      d3.redrawAll();
+    }
 
     // circle.transition()
     //   .duration(1500)
